@@ -6,3 +6,12 @@ chmod +x install_lnmp.sh
 
 3.执行脚本
 ./install_lnmp.sh
+
+4.安装成功后，操作apache
+/usr/local/apache2/bin/apachectl stop|start|restart|status
+
+5.安装成功后，操作mysql
+service mysqld stop|start|restart|status
+
+6.安装成功后，CloudDisk根目录
+/usr/local/apache2/htdocs/clouddisk

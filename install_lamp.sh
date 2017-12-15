@@ -45,6 +45,24 @@ if [[ $SERVER_ID == 1 ]]; then
      phpmyadmin_ins
      xunsearch_ins
      pre_start	
+echo "=================================================================
+    CloudDisk access address : http://127.0.0.1/clouddisk/index.php
+    username : admin
+    password : admin
+=================================================================
+    PhpMyAdmin access address : http://127.0.0.1/phpmyadmin
+    username : root
+    password : 123456
+=================================================================
+    Manage apache server :
+    /usr/local/apache2/bin/apachectl stop|start|restart|status
+
+    Manage mysql server :
+    service mysqld stop|start|restart|status   
+
+    CloudDisk root dir :
+    /usr/local/apache2/htdocs/clouddisk
+    "
 elif [[ $SERVER_ID == 2 ]]; then
      check_env_ins
      apache_ins
