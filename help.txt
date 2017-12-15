@@ -1,0 +1,8 @@
+执行脚本说明:
+1.首先进入解压后的目录
+
+2.更改脚本可执行权限:
+chmod +x install_lnmp.sh
+
+3.执行脚本
+./install_lnmp.sh
