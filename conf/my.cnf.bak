@@ -1,0 +1,74 @@
+[mysql]
+
+# CLIENT #
+port                           = 3306
+socket                         = /tmp/mysql.sock
+
+[mysqld]
+
+# GENERAL #
+user                           = mysql
+default_storage_engine         = InnoDB
+socket                         = /tmp/mysql.sock
+pid_file                       = /var/run/mysqld/mysqld.pid
+
+# MyISAM #
+key_buffer_size                = 32M
+myisam_recover                 = FORCE,BACKUP
+
+# SAFETY #
+max_allowed_packet             = 16M
+max_connect_errors             = 1000000
+skip_name_resolve
+sql_mode                       = STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_AUTO_VALUE_ON_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ONLY_FULL_GROUP_BY
+sysdate_is_now                 = 1
+innodb                         = FORCE
+innodb_strict_mode             = 1
+
+# DATA STORAGE #
+datadir                        = /usr/local/mysql/data
+
+# BINARY LOGGING #
+log-bin                        =/usr/local/mysql/log/bin.log
+expire_logs_days               = 30
+sync_binlog                    = 1
+
+# CACHES AND LIMITS #
+key_buffer                     = 256M
+max_allowed_packet             = 32M
+sort_buffer_size               = 16M
+read_buffer_size               = 4M
+read_rnd_buffer_size           = 16M
+thread_stack                   = 8M
+tmp_table_size                 = 32M
+max_heap_table_size            = 32M
+query_cache_type               = 1
+query_cache_size               = 128M
+query_cache_limit              = 2M
+max_connections                = 2048
+thread_cache_size              = 512
+open_files_limit               = 65535
+table_definition_cache         = 1024
+table_open_cache               = 2048
+
+# INNODB #
+innodb_log_files_in_group      = 2
+innodb_log_file_size           = 64M
+innodb_flush_log_at_trx_commit = 1
+innodb_file_per_table          = 1
+# 2G这个值配置低的话建议改小即可
+innodb_buffer_pool_size        = 512M
+
+# LOGGING #
+log-error=/usr/local/mysql/log/error.log
+general_log=1
+general_log_file=/usr/local/mysql/log/mysql.log
+slow_query_log=1
+slow_query_log_file=/usr/local/mysql/log/slowquery.log
+log-output=FILE
+
+# 避免MySQL的外部锁定，减少出错几率增强稳定性 #
+skip-external-locking
+
+# 禁止sql读取本地文件 #
+local-infile=0
