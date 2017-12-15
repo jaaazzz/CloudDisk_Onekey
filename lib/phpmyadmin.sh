@@ -7,7 +7,7 @@ function phpmyadmin_ins {
 
     echo "[phpmyadmin]extract phpmyadmin package"
     cd $DEFAULT_DIR/src
-    tar -zxvf phpmyadmin.tar.gz  
+    tar -zxvf phpmyadmin.tar.gz  >> $IN_LOG 2>&1 
 
     # 判断根目录是否创建:
     if [ ! -d $APACHE_DIR/htdocs ];then

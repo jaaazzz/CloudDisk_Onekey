@@ -8,9 +8,9 @@ function xunsearch_ins {
     #update C++ compiler
     echo '[xunsearch]update C++ compiler...'
     sleep 1
-    apt-get install build-essential -y
-    gcc -v
-    make -v
+    apt-get install build-essential -y  >> $IN_LOG 2>&1
+    gcc -v  >> $IN_LOG 2>&1
+    make -v  >> $IN_LOG 2>&1
 
     if [[ $? != 0 ]]; then
         echo "[xunsearch]error in the compilation,stop.."
@@ -27,18 +27,18 @@ function xunsearch_ins {
     #extract and make install
     echo "[xunsearch]extract and make install zlib..."
     cd $DEFAULT_DIR/src
-    tar -zxvf zlib-1.2.11.tar.gz
+    tar -zxvf zlib-1.2.11.tar.gz  >> $IN_LOG 2>&1
     cd zlib-1.2.11
-    ./configure
-    make
-    make install
+    ./configure  >> $IN_LOG 2>&1
+    make  >> $IN_LOG 2>&1
+    make install  >> $IN_LOG 2>&1
     
     echo "[xunsearch]extract xunsearch package"
     cd $DEFAULT_DIR/src
-    tar -xjf xunsearch-full-latest.tar.bz2  
+    tar -xjf xunsearch-full-latest.tar.bz2  >> $IN_LOG 2>&1
     mv xunsearch-full-1* xunsearch
     cd xunsearch/
-    sh setup.sh --prefix=/usr/local/xunsearch
+    sh setup.sh --prefix=/usr/local/xunsearch  >> $IN_LOG 2>&1
 
     if [[ $? != 0 ]]; then
         echo "[xunsearch]error in the compilation,stop.."
@@ -48,7 +48,7 @@ function xunsearch_ins {
         sleep 1
     fi
 
-    cd /usr/local/xunsearch ; bin/xs-ctl.sh restart
+    cd /usr/local/xunsearch ; bin/xs-ctl.sh restart  >> $IN_LOG 2>&1
 
     # 判断服务是否启动
     PORT_8383=$(lsof -i:8383|wc -l)

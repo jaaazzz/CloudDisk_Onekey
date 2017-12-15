@@ -69,9 +69,8 @@ function php_ins {
     
     # 重启apache:
     echo "[php]restart apache to load the php module..."
-    $APACHE_DIR/bin/apachectl stop >> $IN_LOG 2>&1
-    $APACHE_DIR/bin/apachectl start >> $IN_LOG 2>&1
-    
+    #$APACHE_DIR/bin/apachectl stop >> $IN_LOG 2>&1
+    $APACHE_DIR/bin/apachectl restart >> $IN_LOG 2>&1
     # 判断PHP是否加载:
     PHP_LOAD=$(curl --head http://localhost/info.php |grep PHP |wc -l)
     if [ $PHP_LOAD == 0 ]; then

@@ -29,8 +29,8 @@ function pre_start {
 
     #restart apache server
     echo "[pre_start]restart apache server..."
-    $APACHE_DIR/bin/apachectl stop >> $IN_LOG 2>&1
-    $APACHE_DIR/bin/apachectl start >> $IN_LOG 2>&1
+    #$APACHE_DIR/bin/apachectl stop >> $IN_LOG 2>&1
+    $APACHE_DIR/bin/apachectl restart >> $IN_LOG 2>&1
 
     # 判断clouddisk是否安装成功
     local timeout=5   

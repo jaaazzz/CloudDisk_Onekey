@@ -45,16 +45,16 @@ function check_env_ins {
     		    make perl bison openssl openssl-devel gcc* libxml2 \
     		    libxml2-devel curl-devel libjpeg* libpng* freetype* vim git rar unrar bison
     elif [ $OS_NAME == 'Ubuntu' ]; then
-        apt-get update
+        apt-get update >> $IN_LOG 2>&1
         apt-get install -y  cmake gcc g++ make autoconf libltdl-dev \
 					libgd2-xpm-dev libfreetype6 libfreetype6-dev libxml2-dev \
 					libjpeg-dev libpng12-dev libcurl4-openssl-dev libssl-dev \
 					patch libmcrypt-dev libmhash-dev libncurses5-dev  \
 					libreadline-dev bzip2 libcap-dev ntpdate diffutils \
-					exim4 iptables unzip sudo vim git rar unrar bison
+					exim4 iptables unzip sudo vim git rar unrar bison >> $IN_LOG 2>&1
 					
 				# 安装chkconfig
-				dpkg -i $DEFAULT_DIR/src/chkconfig_11.0-79.1-2_all.deb
+				dpkg -i $DEFAULT_DIR/src/chkconfig_11.0-79.1-2_all.deb >> $IN_LOG 2>&1
 				ln -s /usr/lib/insserv/insserv /sbin/insserv >> $IN_LOG 2>&1
     else
         echo "[check_env]unknown system,quit..."
