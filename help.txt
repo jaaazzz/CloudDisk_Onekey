@@ -15,3 +15,5 @@ service mysqld stop|start|restart|status
 
 6.安装成功后，CloudDisk根目录
 /usr/local/apache2/htdocs/clouddisk
+
+=============
